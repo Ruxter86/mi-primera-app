@@ -1,0 +1,12 @@
+<h2>Nuestro menú</h2>
+
+<ul>
+  @for (producto of productos; track producto.nombre) {
+    <li>
+      {{ producto.nombre }} — ${{ producto.precio }}
+      @if (!producto.disponible) {
+        <strong>(Agotado)</strong>
+      }
+    </li>
+  }
+</ul>
