@@ -4,9 +4,14 @@
   @for (producto of productos; track producto.nombre) {
     <li>
       {{ producto.nombre }} — ${{ producto.precio }}
-      @if (!producto.disponible) {
+      @if (producto.disponible) {
+        <button (click)="agregar(producto)">Agregar</button>
+      } @else {
         <strong>(Agotado)</strong>
       }
     </li>
   }
 </ul>
+
+<h3>Total del pedido: ${{ total() }}</h3>
+<button (click)="vaciar()">Vaciar pedido</button>

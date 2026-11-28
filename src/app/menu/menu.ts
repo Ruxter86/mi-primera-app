@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 interface Producto {
   nombre: string;
@@ -19,4 +19,14 @@ export class Menu {
     { nombre: 'Chicharrón prensado (1/2 kg)', precio: 150, disponible: false },
     { nombre: 'Orden de tacos (5)', precio: 90, disponible: true },
   ];
+
+  total = signal(0);
+
+  agregar(producto: Producto) {
+    this.total.update((actual) => actual + producto.precio);
+  }
+
+  vaciar() {
+    this.total.set(0);
+  }
 }
